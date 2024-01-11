@@ -11,7 +11,7 @@ export default function Home() {
               <h1 className="heading">Hi There! 👋🏻</h1>
 
               <h1 className="heading-name">
-                I'M <strong className="main-name">DARIO TURIN</strong>
+                {"I'M"} <strong className="main-name">DARIO TURIN</strong>
               </h1>
               <div style={{ textAlign: "left" }}>
                 <Type />
