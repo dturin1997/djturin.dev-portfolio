@@ -1,21 +1,22 @@
 "use client";
 
-import React, { useState, useTransition } from "react";
+import React, { useEffect, useState, useTransition } from "react";
 import Image from "next/image";
 import {
   Navbar,
-  MobileNav,
   Typography,
-  Button,
   IconButton,
-  Card,
+  Collapse,
 } from "@material-tailwind/react";
 import TabButton from "@components/TabButton";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function NavUI() {
+  const pathname = usePathname();
+
   const [openNav, setOpenNav] = React.useState(false);
-  const [tab, setTab] = useState("Home");
+  const [tab, setTab] = useState("pathname");
   const [isPending, startTransition] = useTransition();
 
   const handleTabChange = (id: string) => {
@@ -23,6 +24,10 @@ export default function NavUI() {
       setTab(id);
     });
   };
+
+  useEffect(() => {
+    handleTabChange(pathname);
+  }, [pathname]);
 
   React.useEffect(() => {
     window.addEventListener(
@@ -52,8 +57,8 @@ export default function NavUI() {
             className="flex items-center text-base md:text-lg lg:text-xl"
           >
             <TabButton
-              selectTab={() => handleTabChange(value.name)}
-              active={tab === value.name}
+              selectTab={() => handleTabChange(value.route)}
+              active={tab === value.route}
             >
               {value.name}
             </TabButton>
@@ -67,7 +72,9 @@ export default function NavUI() {
     <Navbar className="sticky top-0 z-10 h-max max-w-full border-0 rounded-none py-2 lg:py-4 bg-[#121212] bg-opacity-55">
       <div className="container mx-auto px-4 py-2">
         <div className="flex items-center justify-between">
-          <Image src="/Logo.png" alt="Logo" width={200} height={200} />
+          <Link href="/">
+            <Image src="/Logo.png" alt="Logo" width={200} height={200} />
+          </Link>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
 
@@ -110,7 +117,7 @@ export default function NavUI() {
             </IconButton>
           </div>
         </div>
-        <MobileNav open={openNav}>{navList}</MobileNav>
+        <Collapse open={openNav}>{navList}</Collapse>
       </div>
     </Navbar>
   );
