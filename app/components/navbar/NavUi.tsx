@@ -21,7 +21,12 @@ export default function NavUI() {
     );
   }, []);
 
-  const navSections = ["Home", "Resume", "Projects", "Contact"];
+  const navSections = [
+    { name: "Home", route: "/" },
+    { name: "Resume", route: "/resume" },
+    { name: "Projects", route: "/projects" },
+    { name: "Contact", route: "/contact" },
+  ];
 
   const navList = (
     <ul className="py-4 flex flex-col items-center gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
@@ -33,10 +38,10 @@ export default function NavUI() {
           className="p-1 font-normal"
         >
           <a
-            href="#"
+            href={value.route}
             className="flex items-center text-base md:text-lg lg:text-xl"
           >
-            {value}
+            {value.name}
           </a>
         </Typography>
       ))}
