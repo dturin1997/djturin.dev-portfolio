@@ -1,34 +1,17 @@
-import Image from "next/image";
-import Type from "@components/Type";
+import Navbar from "@components/navbar";
+import Footer from "@components/Footer";
+import { MeSection } from "./components/MeSection";
 
 export default function Home() {
   return (
-    <section>
-      <div className="flex flex-row items-center justify-between px-2 lg:px-[200px]">
-        <div className="">
-          <div className="home-header">
-            <div>
-              <h1 className="heading">Hi There! 👋🏻</h1>
-
-              <h1 className="heading-name">
-                {"I'M"} <strong className="main-name">DARIO TURIN</strong>
-              </h1>
-              <div style={{ textAlign: "left" }}>
-                <Type />
-              </div>
-            </div>
-          </div>
+    <>
+      <Navbar />
+      <main className="container mx-auto h-[calc(100vh-107.625px)] lg:h-[calc(100vh-123.625px)]">
+        <div className="py-8">
+          <MeSection />
         </div>
-        <div className="py-7">
-          <Image
-            src="/DarioTurin.jpeg"
-            alt="Landscape picture"
-            width={250}
-            height={250}
-            className="home-image"
-          />
-        </div>
-      </div>
-    </section>
+      </main>
+      <Footer />
+    </>
   );
 }

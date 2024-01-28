@@ -1,22 +1,24 @@
 "use client";
 
 import React from "react";
-import Typewriter from "typewriter-effect";
+import { TypeAnimation } from "react-type-animation";
 
 function Type() {
   return (
-    <Typewriter
-      options={{
-        strings: [
-          "Software Developer",
-          "Freelancer",
-          "MERN Stack Developer",
-          "Open Source Contributor",
-        ],
-        autoStart: true,
-        loop: true,
-        deleteSpeed: 50,
-      }}
+    <TypeAnimation
+      sequence={[
+        "Dario",
+        1000,
+        "Web Developer",
+        1000,
+        "Mobile Developer",
+        1000,
+        "Full stack Developer",
+        1000,
+      ]}
+      wrapper="span"
+      speed={50}
+      repeat={Infinity}
     />
   );
 }
