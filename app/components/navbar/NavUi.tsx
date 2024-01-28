@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useTransition } from "react";
 import Image from "next/image";
 import {
   Navbar,
@@ -10,9 +10,19 @@ import {
   IconButton,
   Card,
 } from "@material-tailwind/react";
+import TabButton from "@components/TabButton";
+import Link from "next/link";
 
 export default function NavUI() {
   const [openNav, setOpenNav] = React.useState(false);
+  const [tab, setTab] = useState("Home");
+  const [isPending, startTransition] = useTransition();
+
+  const handleTabChange = (id: string) => {
+    startTransition(() => {
+      setTab(id);
+    });
+  };
 
   React.useEffect(() => {
     window.addEventListener(
@@ -37,12 +47,17 @@ export default function NavUI() {
           color="white"
           className="p-1 font-normal"
         >
-          <a
+          <Link
             href={value.route}
             className="flex items-center text-base md:text-lg lg:text-xl"
           >
-            {value.name}
-          </a>
+            <TabButton
+              selectTab={() => handleTabChange(value.name)}
+              active={tab === value.name}
+            >
+              {value.name}
+            </TabButton>
+          </Link>
         </Typography>
       ))}
     </ul>
