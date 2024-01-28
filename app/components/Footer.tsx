@@ -1,21 +1,35 @@
 "use client";
 
 import { Typography } from "@material-tailwind/react";
+import { AiFillGithub } from "react-icons/ai";
+import { FaLinkedinIn } from "react-icons/fa";
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
-  const footerSections = ["About Us", "License", "Contribute", "Contact Us"];
+  const footerSections = [
+    {
+      name: "Github",
+      link: "https://github.com/dturin1997",
+      icon: <AiFillGithub />,
+    },
+    {
+      name: "Linkedin",
+      link: "https://www.linkedin.com/in/djturin/",
+      icon: <FaLinkedinIn />,
+    },
+  ];
 
   const footerList = footerSections.map((value, index) => (
     <li key={index}>
       <Typography
         as="a"
-        href="#"
+        href={value.link}
+        target="blank"
         color="white"
-        className="font-normal transition-colors hover:text-lime-500 focus:text-lime-500 text-base md:text-lg lg:text-xl"
+        className="font-normal transition-colors hover:text-lime-500 focus:text-lime-500 text-[24px] md:text-3xl lg:text-4xl"
       >
-        {value}
+        {value.icon}
       </Typography>
     </li>
   ));

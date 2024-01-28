@@ -4,6 +4,7 @@ import "./globals.css";
 import React from "react";
 import Navbar from "@components/navbar";
 import Footer from "@components/Footer";
+import Particle from "@components/Particle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-black bg-opacity-90`}>
+        <Particle />
         <Navbar />
         {children}
         <Footer />

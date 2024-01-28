@@ -77,21 +77,16 @@ const AboutSection = () => {
             Hey there! I&apos;m a skilled full-stack web developer who loves
             building cool and dynamic web apps. I&apos;m all about{" "}
             {skills.map((value, index) => (
-              <>
-                <span
-                  key="index"
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-lime-300 to-green-600"
-                >
-                  {value}
-                </span>
+              <span
+                key={index}
+                className="text-transparent bg-clip-text bg-gradient-to-r from-lime-300 to-green-600"
+              >
+                {value}
                 {", "}
-              </>
+              </span>
             ))}
             and{" "}
-            <span
-              key="index"
-              className="text-transparent bg-clip-text bg-gradient-to-r from-lime-300 to-green-600"
-            >
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-lime-300 to-green-600">
               Git
             </span>
             . I&apos;m always up for learning new stuff and improving my skills.
