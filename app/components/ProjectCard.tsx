@@ -20,7 +20,7 @@ interface Props {
 
 export function ProjectCard({ title, body, image, links }: Props) {
   return (
-    <Card className="mt-6 w-96 bg-gradient-to-r from-[#CEF195] to-lime-300">
+    <Card className="mt-6 w-96 bg-gradient-to-r from-[#c0ceaa] to-lime-300">
       <CardHeader color="blue-gray" className="relative h-56">
         <Image src={image} alt="card-image" layout="fill" />
       </CardHeader>
