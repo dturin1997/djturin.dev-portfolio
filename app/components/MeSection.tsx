@@ -8,7 +8,7 @@ export const MeSection = () => {
     <section>
       <div className="grid grid-cols-1 sm:grid-cols-12 sm:py-16 lg:px-16">
         <div className="col-span-5 place-self-center">
-          <div className="rounded-full w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] bg-gradient-to-r from-pink-300/15 to-lime-100/20 relative">
+          <div className="rounded-full w-[250px] h-[250px] sm:w-[210px] sm:h-[210px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px] bg-gradient-to-r from-pink-300/15 to-lime-100/20 relative">
             <Image
               src="/Dario.webp"
               alt="front image"

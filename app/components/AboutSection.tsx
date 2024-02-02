@@ -2,21 +2,67 @@
 import React, { useState, useTransition } from "react";
 import Image from "next/image";
 import TabButton from "./TabButton";
+import { Chip } from "@material-tailwind/react";
+import { Icon } from "@iconify/react";
+
+const SKILLSS = [
+  {
+    name: "React Js",
+    icon: <Icon className="size-5 lg:" icon="skill-icons:react-dark" />,
+  },
+  {
+    name: "Next Js",
+    icon: <Icon className="size-5" icon="logos:nextjs-icon" />,
+  },
+  {
+    name: "Angular",
+    icon: <Icon className="size-5" icon="vscode-icons:file-type-angular" />,
+  },
+  { name: "Redux", icon: <Icon className="size-5" icon="skill-icons:redux" /> },
+  {
+    name: "Node Js",
+    icon: <Icon className="size-5" icon="skill-icons:nodejs-light" />,
+  },
+  {
+    name: "Express",
+    icon: <Icon className="size-5" icon="skill-icons:expressjs-light" />,
+  },
+  {
+    name: "MongoDB",
+    icon: <Icon className="size-5" icon="skill-icons:mongodb" />,
+  },
+  {
+    name: "SQL Server",
+    icon: <Icon className="size-5" icon="devicon:microsoftsqlserver" />,
+  },
+  { name: ".NET", icon: <Icon className="size-5" icon="logos:dotnet" /> },
+  { name: "HTML", icon: <Icon className="size-5" icon="devicon:html5" /> },
+  {
+    name: "CSS",
+    icon: <Icon className="size-5" icon="vscode-icons:file-type-css" />,
+  },
+  {
+    name: "JavaScript",
+    icon: <Icon className="size-5" icon="logos:javascript" />,
+  },
+];
 
 const TAB_DATA = [
   {
     title: "Skills",
     id: "skills",
     content: (
-      <ul className="list-disc pl-2">
-        <li>Node.js</li>
-        <li>Express</li>
-        <li>React Js</li>
-        <li>Next Js</li>
-        <li>Angular</li>
-        <li>SQL Server</li>
-        <li>MongoDB</li>
-        <li>.NET</li>
+      <ul className="flex flex-wrap">
+        {SKILLSS.map((skill, index) => (
+          <li key={index} className="pr-2 pt-1">
+            <Chip
+            
+              className="bg-gradient-to-r from-lime-400 to-green-600 text-white font-semibold hover:text-[#121212] lg:h-8"
+              value={skill.name}
+              icon={skill.icon}
+            />
+          </li>
+        ))}
       </ul>
     ),
   },
@@ -24,9 +70,19 @@ const TAB_DATA = [
     title: "Education",
     id: "education",
     content: (
-      <ul className="list-disc pl-2">
-        <li>Software Design and Development</li>
-        <li>Tecsup, Lima, Peru</li>
+      <ul className="flex flex-wrap">
+        <li className="pr-2 pt-1">
+          <Chip
+            className="bg-gradient-to-r from-lime-400 to-green-600 text-white font-semibold hover:text-[#121212]"
+            value="Software Design and Development"
+          />
+        </li>
+        <li className="pr-2 pt-1">
+          <Chip
+            className="bg-gradient-to-r from-lime-400 to-green-600 text-white font-semibold hover:text-[#121212]"
+            value="Tecsup"
+          />
+        </li>
       </ul>
     ),
   },
@@ -34,9 +90,19 @@ const TAB_DATA = [
     title: "Certifications",
     id: "certifications",
     content: (
-      <ul className="list-disc pl-2">
-        <li>NDG Linux Unhatched</li>
-        <li>PCAP: Programming Essentials in Python</li>
+      <ul className="flex flex-wrap">
+        <li className="pr-2 pt-1">
+          <Chip
+            className="bg-gradient-to-r from-lime-400 to-green-600 text-white font-semibold hover:text-[#121212]"
+            value="NDG Linux Unhatched"
+          />
+        </li>
+        <li className="pr-2 pt-1">
+          <Chip
+            className="bg-gradient-to-r from-lime-400 to-green-600 text-white font-semibold hover:text-[#121212]"
+            value="PCAP: Programming Essentials in Python"
+          />
+        </li>
       </ul>
     ),
   },
@@ -52,20 +118,6 @@ const AboutSection = () => {
     });
   };
 
-  const skills = [
-    "JavaScript",
-    "React",
-    "Redux",
-    "Angular",
-    "Node Js",
-    "Express",
-    "MongoDB",
-    "SQL Server",
-    ".NET",
-    "HTML",
-    "CSS",
-  ];
-
   return (
     <section className="text-white">
       <div className="flex flex-col justify-items-center items-center gap-8 py-8 px-4 xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-16">
@@ -76,12 +128,12 @@ const AboutSection = () => {
           <p className="text-white text-base md:text-lg">
             Hey there! I&apos;m a skilled full-stack web developer who loves
             building cool and dynamic web apps. I&apos;m all about{" "}
-            {skills.map((value, index) => (
+            {SKILLSS.map((skill, index) => (
               <span
                 key={index}
                 className="text-transparent bg-clip-text bg-gradient-to-r from-lime-300 to-green-600"
               >
-                {value}
+                {skill.name}
                 {", "}
               </span>
             ))}
